@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>4-oy 11-dars</title>
+
+    <link rel="shortcut icon" href="./images/js-icon.svg" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="container">
+      <!--                                START -->
+
+      <div class="score--wrapper">
+        <div>
+          <h3>Rock</h3>
+          <h3>Paper</h3>
+          <h3>Scissors</h3>
+          <h3 class="hidden">Lizard</h3>
+          <h3 class="hidden">Spock</h3>
+        </div>
+
+        <div class="score--counter">
+          <h5>Score</h5>
+          <h3 id="counter"></h3>
+        </div>
+      </div>
+
+      <div class="btn--wrapper">
+        <span id="paper" class="pap--pos vis--btn"><img src="./images/paper.svg" alt="Paper" /></span>
+        <span id="rock"  class="rock--pos vis--btn"><img src="./images/rock.svg" alt="rock" /></span>
+        <span id="scissor"  class="scis--pos vis--btn"><img src="./images/scissor.svg" alt="scissor" /></span>
+       
+        <span id="spock" class="hidden"
+          ><img src="./images/spock.svg" alt="spock"
+        /></span>
+        
+        <span id="lizard" class="hidden"
+          ><img src="./images/lizard.svg" alt="lizard"
+        /></span>
+
+        <div id="res" class="hidden">
+          <h2 id="result" class="result"></h2>
+          <button onClick="window.location.reload();" id="restart">Refresh</button>
+        </div>
+
+        <span id="bot--paper" class="hidden ans--pos"><img src="./images/paper.svg" alt="Paper" /></span>
+        <span id="bot--rock"  class="hidden ans--pos"><img src="./images/rock.svg" alt="rock" /></span>
+        <span id="bot--scissor"  class="hidden ans--pos"><img src="./images/scissor.svg" alt="scissor" /></span>
+       
+        <span id="bot--spock" class="hidden"
+          ><img src="./images/spock.svg" alt="spock"
+        /></span>
+        
+        <span id="bot--lizard" class="hidden"
+          ><img src="./images/lizard.svg" alt="lizard"
+        /></span>
+
+
+
+
+
+      </div>
+
+      <button id="advance--chang">Advance Level</button>
+      <button id="rules--btn">Rules</button>
+
+      <div style="display: none" class="rules">
+        <div class="rules--nav">
+          <h3>RULES</h3>
+          <span id="rules--close">X</span>
+        </div>
+
+        <img
+          style="display: block"
+          id="rules--img"
+          src="./images/rules.png"
+          alt="game rules"
+        />
+        <img
+          style="display: none"
+          class="advance--rules"
+          src="./images/advance--rules.png"
+          alt="advance level rules"
+        />
+      </div>
+
+      <!--                                  END -->
+    </div>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
