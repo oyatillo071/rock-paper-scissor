@@ -1,8 +1,61 @@
-let counter = 0;
+let counter = localStorage.getItem("counter")
+  ? parseInt(localStorage.getItem("counter"))
+  : 0;
+
 function innerCounter() {
   document.getElementById("counter").innerHTML = counter;
+  localStorage.setItem("counter", counter);
 }
 innerCounter();
+
+let gameLevel = localStorage.getItem("gameLevel")
+  ? parseInt(localStorage.getItem("gameLevel"))
+  : 3;
+
+function saveGameLevel() {
+  localStorage.setItem("gameLevel", gameLevel);
+}
+
+document
+  .getElementById("refresh--count")
+  .addEventListener("click", function () {
+    counter = 0;
+    innerCounter();
+  });
+
+//
+//
+//
+
+document
+  .getElementById("advance--chang")
+  .addEventListener("click", function () {
+    if (gameLevel == 3) {
+      gameLevel = 5;
+    } else {
+      gameLevel = 3;
+    }
+
+    saveGameLevel();
+
+    document.getElementById("spock").classList.replace("hidden", "vis--btn");
+    document.getElementById("lizard").classList.replace("hidden", "vis--btn");
+    document
+      .getElementById("adv--text")
+      .classList.replace("hidden", "vis--btn");
+    document
+      .getElementById("adv--text2")
+      .classList.replace("hidden", "vis--btn");
+
+    let basicRule = document.getElementById("rules--img");
+    let advRule = document.getElementById("advance--rules");
+
+    basicRule.style.display = "none";
+    advRule.style.display = "block";
+  });
+
+//
+//
 
 function randBot(variant) {
   let rand = Math.trunc(Math.random() * variant);
@@ -10,21 +63,19 @@ function randBot(variant) {
     switch (rand) {
       case 0:
         return "paper";
-
       case 1:
         return "scissor";
       case 2:
         return "rock";
       case 3:
         return "spock";
-
       case 4:
         return "lizard";
 
       default:
         alert("error");
     }
-  } else if (variant == 3) {
+  } else {
     switch (rand) {
       case 0:
         return "paper";
@@ -33,7 +84,6 @@ function randBot(variant) {
         return "scissor";
       case 2:
         return "rock";
-
       default:
         alert("error");
         break;
@@ -42,10 +92,8 @@ function randBot(variant) {
 }
 function innerRes(ansVal) {
   document.getElementById("result").innerHTML = ansVal;
-  let ansWrapper=document.getElementById('res');
-
-  ansWrapper.classList.add('d-flex');
-
+  let ansWrapper = document.getElementById("res");
+  ansWrapper.classList.add("d-flex");
 }
 
 function hideElements(userChoiceId) {
@@ -65,9 +113,8 @@ function botAnsShow(botChoose) {
   botChooseElement.classList.replace("hidden", "vis--btn");
 }
 
-
 document.getElementById("paper").addEventListener("click", function () {
-  let botChoose = randBot(3);
+  let botChoose = randBot(gameLevel);
 
   if (botChoose === "rock" || botChoose === "spock") {
     counter++;
@@ -85,7 +132,7 @@ document.getElementById("paper").addEventListener("click", function () {
 });
 
 document.getElementById("scissor").addEventListener("click", function () {
-  let botChoose = randBot(3);
+  let botChoose = randBot(gameLevel);
 
   if (botChoose == "paper" || botChoose == "lizard") {
     counter++;
@@ -98,12 +145,11 @@ document.getElementById("scissor").addEventListener("click", function () {
 
   hideElements("scissor");
   innerCounter();
-
   botAnsShow(botChoose);
 });
 
 document.getElementById("rock").addEventListener("click", function () {
-  let botChoose = randBot(3);
+  let botChoose = randBot(gameLevel);
 
   if (botChoose == "scissor" || botChoose == "lizard") {
     counter++;
@@ -114,7 +160,7 @@ document.getElementById("rock").addEventListener("click", function () {
     innerRes("You lose!");
   }
 
-  hideElements("scissor");
+  hideElements("rock");
   innerCounter();
 
   botAnsShow(botChoose);
@@ -132,7 +178,7 @@ document.getElementById("spock").addEventListener("click", function () {
     innerRes("You lose!");
   }
 
-  hideElements("scissor");
+  hideElements("spock");
   innerCounter();
 
   botAnsShow(botChoose);
@@ -150,35 +196,29 @@ document.getElementById("lizard").addEventListener("click", function () {
     innerRes("You lose!");
   }
 
-  hideElements("scissor");
+  hideElements("lizard");
   innerCounter();
 
   botAnsShow(botChoose);
 });
 
-
 let btn = document.getElementById("rules--btn");
 let el = document.getElementsByClassName("rules")[0];
 
-btn.addEventListener("click", () => {
+btn.addEventListener("click",function () {
   el.style.display === "none"
     ? (el.style.display = "block")
     : (el.style.display = "none");
 });
 
 let close = document.getElementById("rules--close");
-close.addEventListener("click", () => {
+close.addEventListener("click",function () {
   el.style.display === "none"
     ? (el.style.display = "block")
     : (el.style.display = "none");
 });
 
-let advanceBtn = document.getElementById("advance--chang");
-let adRul = document.getElementsByClassName("advance--rules");
-let basRul = document.getElementById("rules--img");
-
-advanceBtn.addEventListener("click", () => {
-  adRul.style.display === "none"
-    ? (adRul.style.display = "block")
-    : (adRul.style.display = "none");
+document.getElementById("restart").addEventListener("click", function () {
+  localStorage.setItem("counter", counter);
+  location.reload();
 });

@@ -146,6 +146,16 @@ h3 {
   right: 0%;
 }
 
+.spock--pos {
+  bottom: -400px;
+  left: 20%;
+}
+
+.lizard--pos {
+  bottom: -400px;
+  right: 10%;
+}
+
 .user {
   top: 50%;
   left: 0%;

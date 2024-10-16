@@ -17,8 +17,8 @@
           <h3>Rock</h3>
           <h3>Paper</h3>
           <h3>Scissors</h3>
-          <h3 class="hidden">Lizard</h3>
-          <h3 class="hidden">Spock</h3>
+          <h3 id="adv--text" class="hidden">Lizard</h3>
+          <h3 id="adv--text2" class="hidden">Spock</h3>
         </div>
 
         <div class="score--counter">
@@ -28,43 +28,55 @@
       </div>
 
       <div class="btn--wrapper">
-        <span id="paper" class="pap--pos vis--btn"><img src="./images/paper.svg" alt="Paper" /></span>
-        <span id="rock"  class="rock--pos vis--btn"><img src="./images/rock.svg" alt="rock" /></span>
-        <span id="scissor"  class="scis--pos vis--btn"><img src="./images/scissor.svg" alt="scissor" /></span>
-       
-        <span id="spock" class="hidden"
+        <span id="paper" class="pap--pos vis--btn"
+          ><img src="./images/paper.svg" alt="Paper"
+        /></span>
+        <span id="rock" class="rock--pos vis--btn"
+          ><img src="./images/rock.svg" alt="rock"
+        /></span>
+        <span id="scissor" class="scis--pos vis--btn"
+          ><img src="./images/scissor.svg" alt="scissor"
+        /></span>
+
+        <span id="spock" class="spock--pos hidden"
           ><img src="./images/spock.svg" alt="spock"
         /></span>
-        
-        <span id="lizard" class="hidden"
+
+        <span id="lizard" class="lizard--pos hidden"
           ><img src="./images/lizard.svg" alt="lizard"
         /></span>
+        
+        <!--  -->
+        <!--  -->
 
         <div id="res" class="hidden">
           <h2 id="result" class="result"></h2>
-          <button onClick="window.location.reload();" id="restart">Refresh</button>
+          <button id="restart">Play again</button>
         </div>
 
-        <span id="bot--paper" class="hidden ans--pos"><img src="./images/paper.svg" alt="Paper" /></span>
-        <span id="bot--rock"  class="hidden ans--pos"><img src="./images/rock.svg" alt="rock" /></span>
-        <span id="bot--scissor"  class="hidden ans--pos"><img src="./images/scissor.svg" alt="scissor" /></span>
-       
-        <span id="bot--spock" class="hidden"
-          ><img src="./images/spock.svg" alt="spock"
+        <!--  -->
+        <!--  -->
+
+        <span id="bot--paper" class="hidden ans--pos"
+          ><img src="./images/paper.svg" alt="Paper"
         /></span>
-        
-        <span id="bot--lizard" class="hidden"
-          ><img src="./images/lizard.svg" alt="lizard"
+        <span id="bot--rock" class="hidden ans--pos"
+          ><img src="./images/rock.svg" alt="rock"
         /></span>
-
-
-
-
-
+        <span id="bot--scissor" class="hidden ans--pos"
+          ><img src="./images/scissor.svg" alt="scissor"
+        /></span>
+        <span id="bot--lizard" class="hidden ans--pos"
+          ><img src="./images/lizard.svg" alt="scissor"
+        /></span>
+        <span id="bot--spock" class="hidden ans--pos"
+          ><img src="./images/spock.svg" alt="scissor"
+        /></span>
       </div>
 
       <button id="advance--chang">Advance Level</button>
       <button id="rules--btn">Rules</button>
+      <button id="refresh--count">Refresh count</button>
 
       <div style="display: none" class="rules">
         <div class="rules--nav">
@@ -80,6 +92,7 @@
         />
         <img
           style="display: none"
+          id="advance--rules"
           class="advance--rules"
           src="./images/advance--rules.png"
           alt="advance level rules"
