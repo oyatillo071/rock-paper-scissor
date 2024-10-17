@@ -111,6 +111,7 @@ function randBot(variant) {
     }
   }
 }
+
 function innerRes(ansVal) {
   document.getElementById("result").innerHTML = ansVal;
   let ansWrapper = document.getElementById("res");
@@ -120,9 +121,10 @@ function innerRes(ansVal) {
 function hideElements(userChoiceId) {
   let elements = document.querySelectorAll(".btn--wrapper span");
   elements.forEach((el) => {
-    if (el.id !== userChoiceId) {
-      el.classList.add("hidden");
+    if (el.id != userChoiceId) {
+      el.style.display = "none";
     } else {
+      el.style.display = "block";
       el.classList.add("user--pos");
     }
   });
@@ -133,6 +135,7 @@ function hideElements(userChoiceId) {
 function botAnsShow(botChoose) {
   let botChooseElement = document.getElementById(`bot--${botChoose}`);
   botChooseElement.classList.replace("hidden", "vis--btn");
+  botChooseElement.style.display='block';
 }
 
 document.getElementById("paper").addEventListener("click", function () {

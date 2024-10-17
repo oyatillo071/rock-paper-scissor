@@ -173,6 +173,10 @@ h3 {
   top: 40%;
 }
 
+.d-none {
+  display: none;
+}
+
 .user {
   top: 50%;
   left: 0%;
