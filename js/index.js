@@ -8,13 +8,7 @@ function innerCounter() {
 }
 innerCounter();
 
-let gameLevel = localStorage.getItem("gameLevel")
-  ? parseInt(localStorage.getItem("gameLevel"))
-  : 3;
-
-function saveGameLevel() {
-  localStorage.setItem("gameLevel", gameLevel);
-}
+let gameLevel = 3;
 
 document
   .getElementById("refresh--count")
@@ -36,22 +30,49 @@ document
       gameLevel = 3;
     }
 
-    saveGameLevel();
+    let spockHid = document.getElementById("spock");
+    let lizHid = document.getElementById("lizard");
+    let firstHid = document.getElementById("adv--text");
+    let secondHid = document.getElementById("adv--text2");
 
-    document.getElementById("spock").classList.replace("hidden", "vis--btn");
-    document.getElementById("lizard").classList.replace("hidden", "vis--btn");
-    document
-      .getElementById("adv--text")
-      .classList.replace("hidden", "vis--btn");
-    document
-      .getElementById("adv--text2")
-      .classList.replace("hidden", "vis--btn");
+    spockHid.style.display === "none"
+      ? (spockHid.style.display = "block")
+      : (spockHid.style.display = "none");
+
+
+    lizHid.style.display === "none"
+      ? (lizHid.style.display = "block")
+      : (lizHid.style.display = "none");
+
+    firstHid.style.display === "none"
+      ? (firstHid.style.display = "block")
+      : (firstHid.style.display = "none");
+
+    secondHid.style.display === "none"
+      ? (secondHid.style.display = "block")
+      : (secondHid.style.display = "none");
 
     let basicRule = document.getElementById("rules--img");
     let advRule = document.getElementById("advance--rules");
 
-    basicRule.style.display = "none";
-    advRule.style.display = "block";
+    let triangle = document.getElementById("triangle-img");
+    let polygon = document.getElementById("polygon--img");
+
+    triangle.style.display === "none"
+      ? (triangle.style.display = "block")
+      : (triangle.style.display = "none");
+
+    polygon.style.display === "none"
+      ? (polygon.style.display = "block")
+      : (polygon.style.display = "none");
+
+    basicRule.style.display === "none"
+      ? (basicRule.style.display = "block")
+      : (basicRule.style.display = "none");
+
+    advRule.style.display === "none"
+      ? (advRule.style.display = "block")
+      : (advRule.style.display = "none");
   });
 
 //
@@ -105,6 +126,7 @@ function hideElements(userChoiceId) {
       el.classList.add("user--pos");
     }
   });
+
   document.getElementById("res").classList.replace("hidden", "vis--btn");
 }
 
@@ -205,14 +227,14 @@ document.getElementById("lizard").addEventListener("click", function () {
 let btn = document.getElementById("rules--btn");
 let el = document.getElementsByClassName("rules")[0];
 
-btn.addEventListener("click",function () {
+btn.addEventListener("click", function () {
   el.style.display === "none"
     ? (el.style.display = "block")
     : (el.style.display = "none");
 });
 
 let close = document.getElementById("rules--close");
-close.addEventListener("click",function () {
+close.addEventListener("click", function () {
   el.style.display === "none"
     ? (el.style.display = "block")
     : (el.style.display = "none");
@@ -220,5 +242,7 @@ close.addEventListener("click",function () {
 
 document.getElementById("restart").addEventListener("click", function () {
   localStorage.setItem("counter", counter);
+  localStorage.setItem("gameLevel", gameLevel);
+
   location.reload();
 });

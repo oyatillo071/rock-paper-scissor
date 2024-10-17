@@ -17,11 +17,11 @@ body {
 
 h3 {
   color: white;
-  font-size: 26px;
-  font-weight: 600;
   line-height: 1.5;
   letter-spacing: 2.5px;
   text-align: left;
+  font-weight: 700;
+  font-size: 40px;
 }
 
 .score--wrapper {
@@ -30,7 +30,7 @@ h3 {
   padding: 20px 40px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 100px;
+  margin-bottom: 40px;
 }
 .hidden {
   display: none;
@@ -54,6 +54,7 @@ h3 {
   }
   h3 {
     color: blue;
+ 
   }
   img {
     margin-left: 40px;
@@ -107,26 +108,43 @@ h3 {
 
 .pap--pos {
   position: absolute;
-  left: 45%;
+  left: 40%;
+  right: 40%;
   top: 10px;
 }
 
 .scis--pos {
-  top: 100%;
-  left: 10%;
+  top: 90%;
+  left: 17%;
 }
 .rock--pos {
-  top: 100%;
-  right: 0%;
+  top: 90%;
+ left: 68%;
 }
 .spock--pos{
-  bottom: -400px;
-  left: 20%;
+  left: 25%;
+  bottom: -310px;
 }
 .lizard--pos{
-  bottom: -400px;
-  right: 10%;
+  bottom: -310px;
+  left: 58%;
 }
+
+.triangle{
+  position: absolute;
+  z-index: -1;
+  left:30%;
+  right: 30%;
+  transform: rotate(180deg);
+}
+.polygon{
+  position: absolute;
+  z-index: -1;
+  left: 28%;
+  right: 35%;
+  top: 40%;
+}
+
 
 
 .user {
