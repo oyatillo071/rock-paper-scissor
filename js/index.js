@@ -245,6 +245,6 @@ close.addEventListener("click", function () {
 document.getElementById("restart").addEventListener("click", function () {
   localStorage.setItem("counter", counter);
   localStorage.setItem("gameLevel", gameLevel);
-
   location.reload();
+
 });

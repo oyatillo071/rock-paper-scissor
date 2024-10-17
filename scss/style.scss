@@ -54,7 +54,6 @@ h3 {
   }
   h3 {
     color: blue;
- 
   }
   img {
     margin-left: 40px;
@@ -115,29 +114,29 @@ h3 {
 
 .scis--pos {
   top: 90%;
-  left: 17%;
+  left: 12%;
 }
 .rock--pos {
   top: 90%;
- left: 68%;
+  left: 68%;
 }
-.spock--pos{
+.spock--pos {
   left: 25%;
   bottom: -310px;
 }
-.lizard--pos{
+.lizard--pos {
   bottom: -310px;
   left: 58%;
 }
 
-.triangle{
+.triangle {
   position: absolute;
   z-index: -1;
-  left:30%;
+  left: 30%;
   right: 30%;
   transform: rotate(180deg);
 }
-.polygon{
+.polygon {
   position: absolute;
   z-index: -1;
   left: 28%;
@@ -145,7 +144,7 @@ h3 {
   top: 40%;
 }
 
-.d-none{
+.d-none {
   display: none;
 }
 
@@ -169,6 +168,7 @@ button {
   background-color: white;
   border: none;
   margin-left: 90%;
+  
   margin-block: 10px;
   font-size: 16px;
   text-wrap: nowrap;
@@ -197,7 +197,7 @@ button {
   position: absolute;
   top: 40%;
   left: 40%;
-transition: all 1s;
+  transition: all 1s;
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -205,16 +205,14 @@ transition: all 1s;
     color: blue;
     font-size: 45px;
     margin: 10px auto;
-
   }
-  button{
+  button {
     background-color: blue;
     color: white;
     margin: 0;
-    
   }
 }
-.d-flex{
+.d-flex {
   display: flex;
 }
 .user--pos {
