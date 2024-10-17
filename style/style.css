@@ -227,6 +227,7 @@ button {
   position: absolute;
   top: 40%;
   left: 40%;
+  transition: all 1s;
   align-items: center;
   flex-direction: column;
   justify-content: center;

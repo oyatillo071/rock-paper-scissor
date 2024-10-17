@@ -39,7 +39,6 @@ document
       ? (spockHid.style.display = "block")
       : (spockHid.style.display = "none");
 
-
     lizHid.style.display === "none"
       ? (lizHid.style.display = "block")
       : (lizHid.style.display = "none");
@@ -135,7 +134,7 @@ function hideElements(userChoiceId) {
 function botAnsShow(botChoose) {
   let botChooseElement = document.getElementById(`bot--${botChoose}`);
   botChooseElement.classList.replace("hidden", "vis--btn");
-  botChooseElement.style.display='block';
+  botChooseElement.style.display = "block";
 }
 
 document.getElementById("paper").addEventListener("click", function () {
@@ -165,7 +164,7 @@ document.getElementById("scissor").addEventListener("click", function () {
   } else if (botChoose == "rock" || botChoose == "spock") {
     innerRes("You lose!");
   } else {
-    innerRes("You lose!");
+    innerRes("You tied");
   }
 
   hideElements("scissor");
@@ -182,7 +181,7 @@ document.getElementById("rock").addEventListener("click", function () {
   } else if (botChoose == "paper" || botChoose == "spock") {
     innerRes("You lose!");
   } else {
-    innerRes("You lose!");
+    innerRes("You tied");
   }
 
   hideElements("rock");
@@ -200,7 +199,7 @@ document.getElementById("spock").addEventListener("click", function () {
   } else if (botChoose == "paper" || botChoose == "lizard") {
     innerRes("You lose!");
   } else {
-    innerRes("You lose!");
+    innerRes("You tied");
   }
 
   hideElements("spock");
@@ -218,7 +217,7 @@ document.getElementById("lizard").addEventListener("click", function () {
   } else if (botChoose == "scissor" || botChoose == "rock") {
     innerRes("You lose!");
   } else {
-    innerRes("You lose!");
+    innerRes("You taid");
   }
 
   hideElements("lizard");
