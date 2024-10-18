@@ -20,58 +20,32 @@ document
 //
 //
 //
+function changeStyleDisplay(element) {
+  element.style.display = element.style.display === "none" ? "block" : "none";
+}
 
 document
   .getElementById("advance--chang")
   .addEventListener("click", function () {
-    if (gameLevel == 3) {
-      gameLevel = 5;
-    } else {
-      gameLevel = 3;
-    }
+    gameLevel = gameLevel == 3 ? 5 : 3;
 
-    let spockHid = document.getElementById("spock");
-    let lizHid = document.getElementById("lizard");
-    let firstHid = document.getElementById("adv--text");
-    let secondHid = document.getElementById("adv--text2");
+    let changeDisplay = function (element) {
+      element.style.display =
+        element.style.display === "none" ? "block" : "none";
+    };
 
-    spockHid.style.display === "none"
-      ? (spockHid.style.display = "block")
-      : (spockHid.style.display = "none");
+    let advanceButtons = [
+      document.getElementById("spock"),
+      document.getElementById("lizard"),
+      document.getElementById("adv--text"),
+      document.getElementById("adv--text2"),
+      document.getElementById("triangle-img"),
+      document.getElementById("polygon--img"),
+      document.getElementById("rules--img"),
+      document.getElementById("advance--rules"),
+    ];
 
-    lizHid.style.display === "none"
-      ? (lizHid.style.display = "block")
-      : (lizHid.style.display = "none");
-
-    firstHid.style.display === "none"
-      ? (firstHid.style.display = "block")
-      : (firstHid.style.display = "none");
-
-    secondHid.style.display === "none"
-      ? (secondHid.style.display = "block")
-      : (secondHid.style.display = "none");
-
-    let basicRule = document.getElementById("rules--img");
-    let advRule = document.getElementById("advance--rules");
-
-    let triangle = document.getElementById("triangle-img");
-    let polygon = document.getElementById("polygon--img");
-
-    triangle.style.display === "none"
-      ? (triangle.style.display = "block")
-      : (triangle.style.display = "none");
-
-    polygon.style.display === "none"
-      ? (polygon.style.display = "block")
-      : (polygon.style.display = "none");
-
-    basicRule.style.display === "none"
-      ? (basicRule.style.display = "block")
-      : (basicRule.style.display = "none");
-
-    advRule.style.display === "none"
-      ? (advRule.style.display = "block")
-      : (advRule.style.display = "none");
+    advanceButtons.forEach(changeDisplay);
   });
 
 //
@@ -99,7 +73,6 @@ function randBot(variant) {
     switch (rand) {
       case 0:
         return "paper";
-
       case 1:
         return "scissor";
       case 2:
@@ -119,12 +92,12 @@ function innerRes(ansVal) {
 
 function hideElements(userChoiceId) {
   let elements = document.querySelectorAll(".btn--wrapper span");
-  elements.forEach((el) => {
-    if (el.id != userChoiceId) {
-      el.style.display = "none";
+  elements.forEach((element) => {
+    if (element.id != userChoiceId) {
+      element.style.display = "none";
     } else {
-      el.style.display = "block";
-      el.classList.add("user--pos");
+      element.style.display = "block";
+      element.classList.add("user--pos");
     }
   });
 
@@ -137,114 +110,63 @@ function botAnsShow(botChoose) {
   botChooseElement.style.display = "block";
 }
 
-document.getElementById("paper").addEventListener("click", function () {
+let clickBtn = (playerChoice) => {
   let botChoose = randBot(gameLevel);
 
-  if (botChoose === "rock" || botChoose === "spock") {
+  let result;
+  if (
+    (playerChoice === "paper" &&
+      (botChoose === "rock" || botChoose === "spock")) ||
+    (playerChoice === "scissor" &&
+      (botChoose === "paper" || botChoose === "lizard")) ||
+    (playerChoice === "rock" &&
+      (botChoose === "scissor" || botChoose === "lizard")) ||
+    (playerChoice === "spock" &&
+      (botChoose === "rock" || botChoose === "scissor")) ||
+    (playerChoice === "lizard" &&
+      (botChoose === "paper" || botChoose === "spock"))
+  ) {
     counter++;
-    innerRes("You win!");
-  } else if (botChoose === "scissor" || botChoose === "lizard") {
-    innerRes("You lose!");
+    result = "You win!";
+  } else if (
+    (playerChoice === "paper" &&
+      (botChoose === "scissor" || botChoose === "lizard")) ||
+    (playerChoice === "scissor" &&
+      (botChoose === "rock" || botChoose === "spock")) ||
+    (playerChoice === "rock" &&
+      (botChoose === "paper" || botChoose === "spock")) ||
+    (playerChoice === "spock" &&
+      (botChoose === "paper" || botChoose === "lizard")) ||
+    (playerChoice === "lizard" &&
+      (botChoose === "scissor" || botChoose === "rock"))
+  ) {
+    result = "You lose!";
   } else {
-    innerRes("You tied");
+    result = "You tied";
   }
 
-  hideElements("paper");
-  innerCounter();
-
-  botAnsShow(botChoose);
-});
-
-document.getElementById("scissor").addEventListener("click", function () {
-  let botChoose = randBot(gameLevel);
-
-  if (botChoose == "paper" || botChoose == "lizard") {
-    counter++;
-    innerRes("You win!");
-  } else if (botChoose == "rock" || botChoose == "spock") {
-    innerRes("You lose!");
-  } else {
-    innerRes("You tied");
-  }
-
-  hideElements("scissor");
+  innerRes(result);
+  hideElements(playerChoice);
   innerCounter();
   botAnsShow(botChoose);
+};
+
+["paper", "scissor", "rock", "spock", "lizard"].forEach(function (choice) {
+  document.getElementById(choice).addEventListener("click", function () {
+    clickBtn(choice);
+  });
 });
 
-document.getElementById("rock").addEventListener("click", function () {
-  let botChoose = randBot(gameLevel);
-
-  if (botChoose == "scissor" || botChoose == "lizard") {
-    counter++;
-    innerRes("You win!");
-  } else if (botChoose == "paper" || botChoose == "spock") {
-    innerRes("You lose!");
-  } else {
-    innerRes("You tied");
-  }
-
-  hideElements("rock");
-  innerCounter();
-
-  botAnsShow(botChoose);
+document.getElementById("rules--btn").addEventListener("click", function () {
+  changeStyleDisplay(document.getElementsByClassName("rules")[0]);
 });
 
-document.getElementById("spock").addEventListener("click", function () {
-  let botChoose = randBot(5);
-
-  if (botChoose == "rock" || botChoose == "scissor") {
-    counter++;
-    innerRes("You win!");
-  } else if (botChoose == "paper" || botChoose == "lizard") {
-    innerRes("You lose!");
-  } else {
-    innerRes("You tied");
-  }
-
-  hideElements("spock");
-  innerCounter();
-
-  botAnsShow(botChoose);
-});
-
-document.getElementById("lizard").addEventListener("click", function () {
-  let botChoose = randBot(5);
-
-  if (botChoose == "paper" || botChoose == "spock") {
-    counter++;
-    innerRes("You win!");
-  } else if (botChoose == "scissor" || botChoose == "rock") {
-    innerRes("You lose!");
-  } else {
-    innerRes("You taid");
-  }
-
-  hideElements("lizard");
-  innerCounter();
-
-  botAnsShow(botChoose);
-});
-
-let btn = document.getElementById("rules--btn");
-let el = document.getElementsByClassName("rules")[0];
-
-btn.addEventListener("click", function () {
-  el.style.display === "none"
-    ? (el.style.display = "block")
-    : (el.style.display = "none");
-});
-
-let close = document.getElementById("rules--close");
-close.addEventListener("click", function () {
-  el.style.display === "none"
-    ? (el.style.display = "block")
-    : (el.style.display = "none");
+document.getElementById("rules--close").addEventListener("click", function () {
+  changeStyleDisplay(document.getElementsByClassName("rules")[0]);
 });
 
 document.getElementById("restart").addEventListener("click", function () {
   localStorage.setItem("counter", counter);
   localStorage.setItem("gameLevel", gameLevel);
   location.reload();
-
 });

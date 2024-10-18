@@ -63,8 +63,9 @@ h3 {
 
 .rules {
   position: fixed;
-  top: 10%;
-  left: 30%;
+  top: 20%;
+  left: 36%;
+  right: 40%;
   z-index: 999;
   max-width: 500px;
   width: 100%;
@@ -139,7 +140,7 @@ h3 {
 
 .scis--pos {
   top: 90%;
-  left: 12%;
+  left: 17%;
 }
 
 .rock--pos {
