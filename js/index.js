@@ -1,10 +1,7 @@
-let counter = localStorage.getItem("counter")
-  ? parseInt(localStorage.getItem("counter"))
-  : 0;
+let counter = 0;
 
 function innerCounter() {
   document.getElementById("counter").innerHTML = counter;
-  localStorage.setItem("counter", counter);
 }
 innerCounter();
 
@@ -18,8 +15,34 @@ document
   });
 
 //
+
 //
-//
+
+let advanceButtons = [
+  document.getElementById("spock"),
+  document.getElementById("lizard"),
+  document.getElementById("adv--text"),
+  document.getElementById("adv--text2"),
+  document.getElementById("triangle-img"),
+  document.getElementById("polygon--img"),
+  document.getElementById("rules--img"),
+  document.getElementById("advance--rules"),
+];
+
+let botAnsButton = [
+  document.getElementById("bot--spock"),
+  document.getElementById("bot--lizard"),
+  document.getElementById("bot--paper"),
+  document.getElementById("bot--rock"),
+  document.getElementById("bot--scissor"),
+];
+
+["paper", "scissor", "rock", "spock", "lizard"].forEach(function (choice) {
+  document.getElementById(choice).addEventListener("click", function () {
+    clickBtn(choice);
+  });
+});
+
 function changeStyleDisplay(element) {
   element.style.display = element.style.display === "none" ? "block" : "none";
 }
@@ -29,59 +52,19 @@ document
   .addEventListener("click", function () {
     gameLevel = gameLevel == 3 ? 5 : 3;
 
-    let changeDisplay = function (element) {
-      element.style.display =
-        element.style.display === "none" ? "block" : "none";
-    };
-
-    let advanceButtons = [
-      document.getElementById("spock"),
-      document.getElementById("lizard"),
-      document.getElementById("adv--text"),
-      document.getElementById("adv--text2"),
-      document.getElementById("triangle-img"),
-      document.getElementById("polygon--img"),
-      document.getElementById("rules--img"),
-      document.getElementById("advance--rules"),
-    ];
-
-    advanceButtons.forEach(changeDisplay);
+    advanceButtons.forEach(function (value) {
+      changeStyleDisplay(value);
+    });
   });
-
 //
 //
 
-function randBot(variant) {
-  let rand = Math.trunc(Math.random() * variant);
-  if (variant == 5) {
-    switch (rand) {
-      case 0:
-        return "paper";
-      case 1:
-        return "scissor";
-      case 2:
-        return "rock";
-      case 3:
-        return "spock";
-      case 4:
-        return "lizard";
+function randBot() {
+  let variantsForChoice = ["paper", "scissor", "rock", "spock", "lizard"];
 
-      default:
-        alert("error");
-    }
-  } else {
-    switch (rand) {
-      case 0:
-        return "paper";
-      case 1:
-        return "scissor";
-      case 2:
-        return "rock";
-      default:
-        alert("error");
-        break;
-    }
-  }
+  let randNum = Math.trunc(Math.random() * gameLevel);
+
+  return variantsForChoice[randNum];
 }
 
 function innerRes(ansVal) {
@@ -104,6 +87,38 @@ function hideElements(userChoiceId) {
   document.getElementById("res").classList.replace("hidden", "vis--btn");
 }
 
+function botAnsHid() {
+  botAnsButton.forEach(function (value) {
+    value.classList.replace("vis--btn", "hidden");
+    value.style.display = "none";
+  });
+}
+
+function showElementOnRestart(userChoiceId, botChoose) {
+  userChoiceId.classList.remove("user--pos");
+
+  let elements = document.querySelectorAll(".choose--btn--wrapper span");
+
+  elements.forEach(function (spanElement) {
+    spanElement.style.display = "block";
+  });
+
+  if (gameLevel == 3) {
+    advanceButtons.forEach(function (value) {
+      value.style.display = "none";
+    });
+
+    document.getElementById("triangle-img").style.display = "block";
+    document.getElementById("rules--img").style.display = "block";
+  }
+
+  let botElements = document.querySelectorAll(".bot--btn--wrapper span");
+
+  botElements.forEach(function (spanElement) {
+    spanElement.style.display = "none";
+  });
+}
+
 function botAnsShow(botChoose) {
   let botChooseElement = document.getElementById(`bot--${botChoose}`);
   botChooseElement.classList.replace("hidden", "vis--btn");
@@ -111,9 +126,10 @@ function botAnsShow(botChoose) {
 }
 
 let clickBtn = (playerChoice) => {
-  let botChoose = randBot(gameLevel);
+  let botChoose = randBot();
 
   let result;
+
   if (
     (playerChoice === "paper" &&
       (botChoose === "rock" || botChoose === "spock")) ||
@@ -149,13 +165,15 @@ let clickBtn = (playerChoice) => {
   hideElements(playerChoice);
   innerCounter();
   botAnsShow(botChoose);
-};
 
-["paper", "scissor", "rock", "spock", "lizard"].forEach(function (choice) {
-  document.getElementById(choice).addEventListener("click", function () {
-    clickBtn(choice);
-  });
-});
+  document.getElementById("restart").onclick = function () {
+    document.getElementById("res").classList.replace("d-flex", "hidden");
+
+    showElementOnRestart(document.getElementById(playerChoice, botChoose));
+
+    botAnsHid();
+  };
+};
 
 document.getElementById("rules--btn").addEventListener("click", function () {
   changeStyleDisplay(document.getElementsByClassName("rules")[0]);
@@ -163,10 +181,4 @@ document.getElementById("rules--btn").addEventListener("click", function () {
 
 document.getElementById("rules--close").addEventListener("click", function () {
   changeStyleDisplay(document.getElementsByClassName("rules")[0]);
-});
-
-document.getElementById("restart").addEventListener("click", function () {
-  localStorage.setItem("counter", counter);
-  localStorage.setItem("gameLevel", gameLevel);
-  location.reload();
 });
