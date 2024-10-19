@@ -37,7 +37,9 @@ let botAnsButton = [
   document.getElementById("bot--scissor"),
 ];
 
-["paper", "scissor", "rock", "spock", "lizard"].forEach(function (choice) {
+let variantsForChoice = ["paper", "scissor", "rock", "spock", "lizard"];
+
+variantsForChoice.forEach(function (choice) {
   document.getElementById(choice).addEventListener("click", function () {
     clickBtn(choice);
   });
@@ -52,6 +54,28 @@ document
   .addEventListener("click", function () {
     gameLevel = gameLevel == 3 ? 5 : 3;
 
+    if (gameLevel == 5) {
+      document
+        .getElementById("paper")
+        .classList.replace("pap--stan--pos", "pap--adv--pos");
+      document
+        .getElementById("rock")
+        .classList.replace("rock--stan--pos", "rock--adv--pos");
+      document
+        .getElementById("scissor")
+        .classList.replace("scis--stan--pos", "scis--adv--pos");
+    } else {
+      document
+        .getElementById("paper")
+        .classList.replace("pap--adv--pos", "pap--stan--pos");
+      document
+        .getElementById("rock")
+        .classList.replace("rock--adv--pos", "rock--stan--pos");
+      document
+        .getElementById("scissor")
+        .classList.replace("scis--adv--pos", "scis--stan--pos");
+    }
+
     advanceButtons.forEach(function (value) {
       changeStyleDisplay(value);
     });
@@ -60,8 +84,6 @@ document
 //
 
 function randBot() {
-  let variantsForChoice = ["paper", "scissor", "rock", "spock", "lizard"];
-
   let randNum = Math.trunc(Math.random() * gameLevel);
 
   return variantsForChoice[randNum];

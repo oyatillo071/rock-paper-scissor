@@ -108,24 +108,40 @@ h3 {
 
 .pap--pos {
   position: absolute;
-  left: 40%;
-  right: 40%;
-  top: 10px;
+}
+.pap--stan--pos {
+  left: 90px;
 }
 
-.scis--pos {
-  top: 90%;
-  left: 17%;
+.scis--adv--pos {
+  left: 40%;
+  right: 40%;
+  top: -15px;
 }
-.rock--pos {
-  top: 90%;
-  left: 68%;
+
+.scis--stan--pos {
+  left: 490px;
 }
+
 .spock--pos {
+  top: 72%;
+  left: 10%;
+}
+
+.rock--stan--pos {
+  left: 290px;
+  top: 320px;
+}
+.pap--adv--pos {
+  top: 70%;
+  left: 72%;
+}
+
+.lizard--pos {
   left: 25%;
   bottom: -310px;
 }
-.lizard--pos {
+.rock--adv--pos {
   bottom: -310px;
   left: 58%;
 }
@@ -134,8 +150,8 @@ h3 {
   position: absolute;
   z-index: -1;
   left: 30%;
+  top: 40%;
   right: 30%;
-  transform: rotate(180deg);
 }
 .polygon {
   position: absolute;
@@ -169,7 +185,7 @@ button {
   background-color: white;
   border: none;
   margin-left: 90%;
-  
+
   margin-block: 10px;
   font-size: 16px;
   text-wrap: nowrap;
