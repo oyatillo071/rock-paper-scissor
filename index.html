@@ -9,116 +9,123 @@
     <link rel="shortcut icon" href="./images/favicon.svg" type="image/x-icon" />
   </head>
   <body>
+    <div style="display: none" class="loader">
+      <div class="spinner"></div>
+    </div>
+
     <div class="container">
       <!--                                START -->
+      <div class="wrapper">
+        <div class="score--wrapper">
+          <div>
+            <h3>Rock</h3>
+            <h3>Paper</h3>
+            <h3>Scissors</h3>
+            <h3 id="adv--text" style="display: none">Lizard</h3>
+            <h3 id="adv--text2" style="display: none">Spock</h3>
+          </div>
 
-      <div class="score--wrapper">
-        <div>
-          <h3>Rock</h3>
-          <h3>Paper</h3>
-          <h3>Scissors</h3>
-          <h3 id="adv--text" style="display: none">Lizard</h3>
-          <h3 id="adv--text2" style="display: none">Spock</h3>
+          <div class="score--counter">
+            <h5>Score</h5>
+            <h3 id="counter"></h3>
+          </div>
         </div>
 
-        <div class="score--counter">
-          <h5>Score</h5>
-          <h3 id="counter"></h3>
+        <div class="btn--wrapper">
+          <div class="choose--btn--wrapper">
+            <span id="paper" class="pap--pos pap--stan--pos vis--btn"
+              ><img src="./images/paper.svg" alt="Paper"
+            /></span>
+
+            <span id="rock" class="rock--stan--pos vis--btn"
+              ><img src="./images/rock.svg" alt="rock"
+            /></span>
+            <span id="scissor" class="scis--stan--pos vis--btn"
+              ><img src="./images/scissor.svg" alt="scissor"
+            /></span>
+
+            <span style="display: none" id="spock" class="spock--pos"
+              ><img src="./images/spock.svg" alt="spock"
+            /></span>
+
+            <span style="display: none" id="lizard" class="lizard--pos"
+              ><img src="./images/lizard.svg" alt="lizard"
+            /></span>
+          </div>
+
+          <!--  -->
+
+          <img
+            style="display: block"
+            id="triangle-img"
+            class="triangle"
+            src="./images/triangle.png"
+            alt="tringle"
+          />
+
+          <img
+            style="display: none"
+            id="polygon--img"
+            class="polygon"
+            src="./images/Polygon.png"
+            alt="poligon"
+          />
+
+          <!--  -->
+
+          <div id="res" class="hidden">
+            <h2 id="result" class="result"></h2>
+            <button id="restart">Play again</button>
+          </div>
+
+          <!--  -->
+
+          <!--  -->
+          <div class="bot--btn--wrapper">
+            <span id="bot--paper" class="hidden ans--pos"
+              ><img src="./images/paper.svg" alt="Paper"
+            /></span>
+            <span id="bot--rock" class="hidden ans--pos"
+              ><img src="./images/rock.svg" alt="rock"
+            /></span>
+            <span id="bot--scissor" class="hidden ans--pos"
+              ><img src="./images/scissor.svg" alt="scissor"
+            /></span>
+            <span id="bot--lizard" class="hidden ans--pos"
+              ><img src="./images/lizard.svg" alt="scissor"
+            /></span>
+            <span id="bot--spock" class="hidden ans--pos"
+              ><img src="./images/spock.svg" alt="scissor"
+            /></span>
+          </div>
         </div>
-      </div>
+        <div class="button--wrapper">
 
-      <div class="btn--wrapper">
-        <div class="choose--btn--wrapper">
-          <span id="paper" class="pap--pos pap--stan--pos vis--btn"
-            ><img src="./images/paper.svg" alt="Paper"
-          /></span>
-
-          <span id="rock" class="rock--stan--pos vis--btn"
-            ><img src="./images/rock.svg" alt="rock"
-          /></span>
-          <span id="scissor" class="scis--stan--pos vis--btn"
-            ><img src="./images/scissor.svg" alt="scissor"
-          /></span>
-
-          <span style="display: none" id="spock" class="spock--pos"
-            ><img src="./images/spock.svg" alt="spock"
-          /></span>
-
-          <span style="display: none" id="lizard" class="lizard--pos"
-            ><img src="./images/lizard.svg" alt="lizard"
-          /></span>
-        </div>
-
-        <!--  -->
-
-        <img
-          style="display: block"
-          id="triangle-img"
-          class="triangle"
-          src="./images/triangle.png"
-          alt="tringle"
-        />
-
-        <img
-          style="display: none"
-          id="polygon--img"
-          class="polygon"
-          src="./images/Polygon.png"
-          alt="poligon"
-        />
-
-        <!--  -->
-
-        <div id="res" class="hidden">
-          <h2 id="result" class="result"></h2>
-          <button id="restart">Play again</button>
-        </div>
-
-        <!--  -->
-
-        <!--  -->
-        <div class="bot--btn--wrapper">
-          <span id="bot--paper" class="hidden ans--pos"
-            ><img src="./images/paper.svg" alt="Paper"
-          /></span>
-          <span id="bot--rock" class="hidden ans--pos"
-            ><img src="./images/rock.svg" alt="rock"
-          /></span>
-          <span id="bot--scissor" class="hidden ans--pos"
-            ><img src="./images/scissor.svg" alt="scissor"
-          /></span>
-          <span id="bot--lizard" class="hidden ans--pos"
-            ><img src="./images/lizard.svg" alt="scissor"
-          /></span>
-          <span id="bot--spock" class="hidden ans--pos"
-            ><img src="./images/spock.svg" alt="scissor"
-          /></span>
-        </div>
-      </div>
-
-      <button id="advance--chang">Advance Level</button>
-      <button id="rules--btn">Rules</button>
-      <button id="refresh--count">Refresh count</button>
-
-      <div style="display: none" class="rules">
-        <div class="rules--nav">
-          <h3>RULES</h3>
-          <span id="rules--close">X</span>
+          <button id="advance--chang">Advance Level</button>
+          <button id="rules--btn">Rules</button>
+          <button id="refresh--count">Refresh count</button>
         </div>
 
-        <img
-          style="display: block"
-          id="rules--img"
-          src="./images/rules.png"
-          alt="game rules"
-        />
-        <img
-          style="display: none"
-          id="advance--rules"
-          class="advance--rules"
-          src="./images/advance--rules.png"
-          alt="advance level rules"
-        />
+        <div style="display: none" class="rules">
+          <div class="rules--nav">
+            <h3>RULES</h3>
+            <span id="rules--close">X</span>
+          </div>
+
+          <img
+            style="display: block"
+            id="rules--img"
+            src="./images/rules.png"
+            alt="game rules"
+          />
+          <img
+            style="display: none"
+            id="advance--rules"
+            class="advance--rules"
+            src="./images/advance--rules.png"
+            alt="advance level rules"
+          />
+        </div>
       </div>
 
       <!--                                  END -->

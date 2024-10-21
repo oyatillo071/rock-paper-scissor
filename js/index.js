@@ -4,7 +4,6 @@ function innerCounter() {
   document.getElementById("counter").innerHTML = counter;
 }
 innerCounter();
-
 let gameLevel = 3;
 
 document
@@ -88,10 +87,10 @@ function randBot() {
 
   return variantsForChoice[randNum];
 }
+let ansWrapper = document.getElementById("res");
 
 function innerRes(ansVal) {
   document.getElementById("result").innerHTML = ansVal;
-  let ansWrapper = document.getElementById("res");
   ansWrapper.classList.add("d-flex");
 }
 
@@ -141,15 +140,13 @@ function showElementOnRestart(userChoiceId, botChoose) {
   });
 }
 
-function botAnsShow(botChoose) {
+function botAnsShow() {
   let botChooseElement = document.getElementById(`bot--${botChoose}`);
   botChooseElement.classList.replace("hidden", "vis--btn");
   botChooseElement.style.display = "block";
 }
-
+let botChoose = randBot();
 let clickBtn = (playerChoice) => {
-  let botChoose = randBot();
-
   let result;
 
   if (
@@ -186,7 +183,8 @@ let clickBtn = (playerChoice) => {
   innerRes(result);
   hideElements(playerChoice);
   innerCounter();
-  botAnsShow(botChoose);
+
+  const myTimeout = setTimeout(botAnsShow, 300);
 
   document.getElementById("restart").onclick = function () {
     document.getElementById("res").classList.replace("d-flex", "hidden");
